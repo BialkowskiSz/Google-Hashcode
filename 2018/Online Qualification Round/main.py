@@ -7,6 +7,10 @@
 # Version 1.0
 #
 
+
+
+
+import os
 from heapq import heappush, heappop
 
 class vehicle:
@@ -19,7 +23,7 @@ class vehicle:
 
     def determineClosestDrive(self, driver):
         heap    = []
-       # bonus   = 0
+        bonus   = 0
         waiting = 0
         for i, value in enumerate(driver.allDrives):
             if not value:
@@ -27,12 +31,12 @@ class vehicle:
             distanceToPickup = abs(self.location[0] - value[0]) + abs(self.location[1] - value[1])
             arrivalTime      = driver.currentStep + distanceToPickup
             if arrivalTime <= value[4]:
-                #bonus = driver.rideOnTimeBonus
+                bonus = driver.rideOnTimeBonus
                 if (value[4] - arrivalTime) > 0:
                     waiting = value[4] - arrivalTime
 
             #   Metric for time wasted
-            steps = distanceToPickup + waiting # - bonus
+            steps = distanceToPickup - bonus + waiting
             distanceToDestination = abs(value[0] - value[2]) + abs(value[1] + value[3])
             ETA = driver.currentStep + distanceToPickup + waiting + distanceToDestination
             #   If will arrive on time
