@@ -1,4 +1,4 @@
-#### Extended Round Score: 8,339,068
+### Extended Round Score: 8,339,068
 
 - A breadth first search along with a graph solution was our first attempt but the weighing and updating of the graph proved too time-consuming so we switched to a simpler possible solution.
 
